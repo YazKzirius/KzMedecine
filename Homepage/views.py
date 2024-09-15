@@ -5,4 +5,4 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def Homepage(request):
-    return HttpResponse("This is Kzmedecine homepage")
+   return render(request, 'homepage/layout.html')

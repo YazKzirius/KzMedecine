@@ -23,10 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-48gb7z-c0(n(q4rg$gx3_s%ng!r+(9e&y@dp7tlf0t)$)qb45r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'yourdomain.com']
-
 
 # Application definition
 
@@ -37,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'homepage',
 ]
 
 MIDDLEWARE = [
@@ -51,11 +51,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Kzmedecine.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [],  # Leave empty if you are using app-specific templates
+        'APP_DIRS': True,  # This must be True
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -114,8 +115,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+STATIC_URL = '/static/'
 
-STATIC_URL = 'static/'
+# Add this line if it's not present
+STATICFILES_DIRS = [
+    BASE_DIR / 'homepage/static/',
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
